@@ -21,8 +21,8 @@ def calculate():
     SpAtkEv = float(entry13.get())
     #SpDef
     Spdef = float(entry14.get())
-    SpDefev = float(entry15.get())
-    SpDefiv = float(entry16.get())
+    SpDefiv = float(entry15.get())
+    SpDefev = float(entry16.get())
     #speed
     Speed = float(entry17.get())
     SpeedIV = float(entry18.get())
