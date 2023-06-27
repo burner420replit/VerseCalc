@@ -117,7 +117,15 @@ def calculate():
         result_SpDef = (Spdef + (SpDefiv * 1.5) + SpDefev) * (1.4) * ((level * 2/5) + 2)
         result_Speed = (Speed + (SpeedIV * 1.5) + SpeedEV) * (1.4) * ((level * 2/5) + 2)
 
+    if use_rare and use_mutated and use_shiny:
+        result_hp = (hp + (hpiv*1.5) + hpev) * (1.4) * (level * 0.04)
+        result_atk = (atk + (atkiv * 1.5) + atkev) * (1.4) *((level * 2/5) + 2)
+        result_def = (Def + (Defiv * 1.5) + Defev) * (1.4) * ((level * 2/5) + 2)
+        result_SpAtk = (SpAtk + (SpAtkIv * 1.5) + SpAtkEv) * (1.4) * ((level * 2/5) + 2)
+        result_SpDef = (Spdef + (SpDefiv * 1.5) + SpDefev) * (1.4) * ((level * 2/5) + 2)
+        result_Speed = (Speed + (SpeedIV * 1.5) + SpeedEV) * (1.4) * ((level * 2/5) + 2)
 
+    
     if use_rare and use_male and use_shiny and use_mutated:
         result_hp = (hp + (hpiv*1.5) + hpev) * (1.5) * (level * 0.04)
         result_atk = (atk + (atkiv * 1.5) + atkev) * (1.5) *((level * 2/5) + 2)
