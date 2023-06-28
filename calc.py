@@ -59,12 +59,12 @@ def calculate():
     if use_rare:
         iv_boost = 1.5
 
-    result_hp = ((hp + (hpiv * iv_boost) + hpev) * (multiplication_boost) * (level * 0.04) * star_boost)
-    result_atk = ((atk + (atkiv * iv_boost) + atkev) * (multiplication_boost) *((level * 2/5) + 2) * star_boost)
-    result_def = ((Def + (Defiv * iv_boost) + Defev) * (multiplication_boost) * ((level * 2/5) + 2) * star_boost)
-    result_SpAtk = ((SpAtk + (SpAtkIv * iv_boost) + SpAtkEv) * (multiplication_boost) * ((level * 2/5) + 2) * star_boost)
-    result_SpDef = ((Spdef + (SpDefiv * iv_boost) + SpDefev) * (multiplication_boost) * ((level * 2/5) + 2) * star_boost)
-    result_Speed = ((Speed) * star_boost)
+    result_hp = round(((hp + (hpiv * iv_boost) + hpev) * (multiplication_boost) * (level * 0.04) * star_boost))
+    result_atk = round(((atk + (atkiv * iv_boost) + atkev) * (multiplication_boost) *((level * 2/5) + 2) * star_boost))
+    result_def = round(((Def + (Defiv * iv_boost) + Defev) * (multiplication_boost) * ((level * 2/5) + 2) * star_boost))
+    result_SpAtk = round(((SpAtk + (SpAtkIv * iv_boost) + SpAtkEv) * (multiplication_boost) * ((level * 2/5) + 2) * star_boost))
+    result_SpDef = round(((Spdef + (SpDefiv * iv_boost) + SpDefev) * (multiplication_boost) * ((level * 2/5) + 2) * star_boost))
+    result_Speed = round(((Speed) * star_boost))
     
 
     resulthp_label.config(text="Hp: " + str(result_hp))
