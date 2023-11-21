@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import *
+import math
 
 def calculate():
     # Retrieve input values
@@ -35,8 +36,10 @@ def calculate():
     # Retrieve checkbox states
     use_male = checkbox_var1.get()
     use_shiny = checkbox_var2.get()
-    use_mutated = checkbox_var3.get()
-    use_rare = checkbox_var4.get()
+    use_shifter = checkbox_var3.get()
+    use_lucky = checkbox_var4.get()
+    use_mutated = checkbox_var5.get()
+    use_rare = checkbox_var6.get()
     
     # Perform calculation based on checkbox states
     result_hp = 0
@@ -53,18 +56,22 @@ def calculate():
     if use_male:
         multiplication_boost += 0.1
     if use_shiny:
+        multiplication_boost += 0.15
+    if use_shifter:
         multiplication_boost += 0.1
+    if use_lucky:
+        multiplication_boost += 0.07
     if use_mutated:
         multiplication_boost += 0.3
     if use_rare:
         iv_boost = 1.5
 
-    result_hp = round(((hp + (hpiv * iv_boost) + hpev) * (multiplication_boost) * (level * 0.04) * star_boost))
-    result_atk = round(((atk + (atkiv * iv_boost) + atkev) * (multiplication_boost) *((level * 2/5) + 2) * star_boost))
-    result_def = round(((Def + (Defiv * iv_boost) + Defev) * (multiplication_boost) * ((level * 2/5) + 2) * star_boost))
-    result_SpAtk = round(((SpAtk + (SpAtkIv * iv_boost) + SpAtkEv) * (multiplication_boost) * ((level * 2/5) + 2) * star_boost))
-    result_SpDef = round(((Spdef + (SpDefiv * iv_boost) + SpDefev) * (multiplication_boost) * ((level * 2/5) + 2) * star_boost))
-    result_Speed = round(((Speed) * star_boost))
+    result_hp = math.floor(((hp + (hpiv * iv_boost) + hpev) * (multiplication_boost) * (level * 0.04) * star_boost))
+    result_atk = math.floor(((atk + (atkiv * iv_boost) + atkev) * (multiplication_boost) *((level * 2/5) + 2) * star_boost))
+    result_def = math.floor(((Def + (Defiv * iv_boost) + Defev) * (multiplication_boost) * ((level * 2/5) + 2) * star_boost))
+    result_SpAtk = math.floor(((SpAtk + (SpAtkIv * iv_boost) + SpAtkEv) * (multiplication_boost) * ((level * 2/5) + 2) * star_boost))
+    result_SpDef = math.floor(((Spdef + (SpDefiv * iv_boost) + SpDefev) * (multiplication_boost) * ((level * 2/5) + 2) * star_boost))
+    result_Speed = math.floor(((Speed) * star_boost))
     
 
     resulthp_label.config(text="Hp: " + str(result_hp))
@@ -72,7 +79,7 @@ def calculate():
     resultDef_label.config(text="Defense: " + str(result_def))
     resultSpAtk_label.config(text="Special Attack: " + str(result_SpAtk))
     resultSpDef_label.config(text="Special Defense: " + str(result_SpDef))
-    resultSpeed_label.config(text="Speed: " + str(result_Speed))
+    resultSpeed_label.config(text="Speed: " + str(result_Speed) + "\n(The speed stat calculation not known,\nso this value is a rough estimation given by Wittie.)")
 
 # Create the main window
 window = tk.Tk()
@@ -171,16 +178,24 @@ checkbox1 = tk.Checkbutton(window, text="male", variable=checkbox_var1, onvalue=
 checkbox1.grid(row=8, column=0, sticky="w")
 
 checkbox_var2 = tk.BooleanVar()
-checkbox2 = tk.Checkbutton(window, text="shiny/shifter", variable=checkbox_var2, onvalue=1, offvalue=0)
-checkbox2.grid(row=9, column=0, sticky="w")
+checkbox2 = tk.Checkbutton(window, text="shiny", variable=checkbox_var2, onvalue=1, offvalue=0)
+checkbox2.grid(row=8, column=1, sticky="w")
 
 checkbox_var3 = tk.BooleanVar()
-checkbox3 = tk.Checkbutton(window, text="mutated", variable=checkbox_var3, onvalue=1, offvalue=0)
-checkbox3.grid(row=10, column=0, sticky="w")
+checkbox3 = tk.Checkbutton(window, text="shifter", variable=checkbox_var3, onvalue=1, offvalue=0)
+checkbox3.grid(row=9, column=1, sticky="w")
 
 checkbox_var4 = tk.BooleanVar()
-checkbox4 = tk.Checkbutton(window, text="rare", variable=checkbox_var4, onvalue=1, offvalue=0)
-checkbox4.grid(row=11, column=0, sticky="w")
+checkbox4 = tk.Checkbutton(window, text="lucky", variable=checkbox_var4, onvalue=1, offvalue=0)
+checkbox4.grid(row=10, column=1, sticky="w")
+
+checkbox_var5 = tk.BooleanVar()
+checkbox5 = tk.Checkbutton(window, text="mutated", variable=checkbox_var5, onvalue=1, offvalue=0)
+checkbox5.grid(row=9, column=0, sticky="w")
+
+checkbox_var6 = tk.BooleanVar()
+checkbox6 = tk.Checkbutton(window, text="rare", variable=checkbox_var6, onvalue=1, offvalue=0)
+checkbox6.grid(row=10, column=0, sticky="w")
 
 # Create calculate button
 calculate_button = tk.Button(window, text="Calculate", command=calculate, width=10).grid(row=12, column=0)
